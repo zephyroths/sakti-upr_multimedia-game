@@ -1,0 +1,33 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://images/spritesheets/dungeon.png" type="Texture" id=1]
+
+
+[sub_resource type="AtlasTexture" id=1]
+atlas = ExtResource( 1 )
+region = Rect2( 64, 32, 32, 32 )
+
+[sub_resource type="SpriteFrames" id=2]
+animations = [ {
+"frames": [ SubResource( 1 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+} ]
+
+[node name="dungeon_final" type="AnimatedSprite"]
+frames = SubResource( 2 )
+
+[node name="button" type="Button" parent="."]
+anchor_left = 0.0094831
+anchor_top = 0.0153935
+anchor_right = 1.00948
+anchor_bottom = 1.01539
+margin_left = -16.0
+margin_top = -16.0
+margin_right = -16.0
+margin_bottom = -16.0
+flat = true
+__meta__ = {
+"_edit_use_anchors_": true
+}

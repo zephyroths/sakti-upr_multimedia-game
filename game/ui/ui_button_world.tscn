@@ -1,0 +1,48 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://images/spritesheets/portal.png" type="Texture" id=1]
+
+
+[sub_resource type="AtlasTexture" id=1]
+atlas = ExtResource( 1 )
+region = Rect2( 0, 0, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=2]
+atlas = ExtResource( 1 )
+region = Rect2( 32, 0, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=3]
+atlas = ExtResource( 1 )
+region = Rect2( 0, 32, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=4]
+atlas = ExtResource( 1 )
+region = Rect2( 32, 32, 32, 32 )
+
+[sub_resource type="SpriteFrames" id=5]
+animations = [ {
+"frames": [ SubResource( 1 ), SubResource( 2 ), SubResource( 3 ), SubResource( 4 ) ],
+"loop": true,
+"name": "default",
+"speed": 12.0
+} ]
+
+[node name="button_world" type="Button"]
+anchor_left = 0.0017412
+anchor_top = 0.00164282
+anchor_right = 0.17188
+anchor_bottom = 0.0934397
+margin_left = -1.00293
+margin_top = -1.68224
+margin_right = -1.00293
+margin_bottom = -1.6823
+shortcut_in_tooltip = false
+flat = true
+__meta__ = {
+"_edit_use_anchors_": true
+}
+
+[node name="sprite" type="AnimatedSprite" parent="."]
+position = Vector2( 49, 46 )
+scale = Vector2( 3, 3 )
+frames = SubResource( 5 )

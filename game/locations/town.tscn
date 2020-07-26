@@ -1,0 +1,111 @@
+[gd_scene load_steps=15 format=2]
+
+[ext_resource path="res://ui/ui_upgrade_potion.tscn" type="PackedScene" id=1]
+[ext_resource path="res://ui/ui_upgrade_weapon.tscn" type="PackedScene" id=2]
+[ext_resource path="res://ui/ui_upgrade_armor.tscn" type="PackedScene" id=3]
+[ext_resource path="res://ui/ui_button_exit.tscn" type="PackedScene" id=4]
+[ext_resource path="res://images/ui/back.png" type="Texture" id=5]
+[ext_resource path="res://sound/cant buy.wav" type="AudioStream" id=6]
+[ext_resource path="res://sound/buy.wav" type="AudioStream" id=7]
+[ext_resource path="res://scripts/town.gd" type="Script" id=8]
+[ext_resource path="res://ui/ui_gold.tscn" type="PackedScene" id=9]
+[ext_resource path="res://ui/ui_button_world.tscn" type="PackedScene" id=10]
+[ext_resource path="res://system/save/save_game.tscn" type="PackedScene" id=11]
+[ext_resource path="res://scripts/save_game.gd" type="Script" id=12]
+[ext_resource path="res://images/backgrounds/city.png" type="Texture" id=13]
+[ext_resource path="res://ui/ui_overlay.tscn" type="PackedScene" id=14]
+
+[node name="town" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 8 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="background" type="TextureRect" parent="."]
+show_behind_parent = true
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = ExtResource( 13 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": true
+}
+
+[node name="overlay" parent="." instance=ExtResource( 14 )]
+
+[node name="ui_upgrade" type="TextureRect" parent="."]
+anchor_left = 0.00173611
+anchor_top = 0.679688
+anchor_right = 0.998264
+anchor_bottom = 1.0
+margin_right = -287.0
+margin_bottom = -164.0
+rect_scale = Vector2( 2, 2 )
+texture = ExtResource( 5 )
+stretch_mode = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ui_upgrade_weapon" parent="ui_upgrade" instance=ExtResource( 2 )]
+anchor_left = 0.0679443
+anchor_top = 0.0914637
+anchor_right = 0.945993
+anchor_bottom = 0.286586
+margin_bottom = 1.90735e-06
+
+[node name="ui_upgrade_armor" parent="ui_upgrade" instance=ExtResource( 3 )]
+anchor_left = 0.0679443
+anchor_top = 0.298781
+anchor_right = 0.945993
+anchor_bottom = 0.493904
+
+[node name="ui_upgrade_potion" parent="ui_upgrade" instance=ExtResource( 1 )]
+anchor_left = 0.0679443
+anchor_top = 0.506099
+anchor_right = 0.945993
+anchor_bottom = 0.701222
+
+[node name="button_exit" parent="." instance=ExtResource( 4 )]
+anchor_left = 0.0277778
+anchor_top = 0.0185547
+anchor_right = 0.138889
+anchor_bottom = 0.0810547
+margin_right = -32.0
+margin_bottom = -32.0
+rect_scale = Vector2( 2, 2 )
+
+[node name="ui_gold" parent="." instance=ExtResource( 9 )]
+anchor_left = 0.285899
+anchor_top = 0.0174367
+anchor_right = 0.702566
+anchor_bottom = 0.0799367
+margin_right = -120.0
+margin_bottom = -32.0
+rect_scale = Vector2( 2, 2 )
+
+[node name="button_world" parent="." instance=ExtResource( 10 )]
+anchor_left = 0.81945
+anchor_top = 0.00945532
+anchor_right = 0.989588
+anchor_bottom = 0.101252
+
+[node name="audio" type="Node" parent="."]
+
+[node name="audio_buy" type="AudioStreamPlayer" parent="audio"]
+stream = ExtResource( 7 )
+
+[node name="audio_buy_failed" type="AudioStreamPlayer" parent="audio"]
+stream = ExtResource( 6 )
+
+[node name="save_game" parent="." instance=ExtResource( 11 )]
+script = ExtResource( 12 )
+[connection signal="pressed" from="ui_upgrade/ui_upgrade_weapon" to="." method="_upgrade_weapon"]
+[connection signal="pressed" from="ui_upgrade/ui_upgrade_armor" to="." method="_upgrade_armor"]
+[connection signal="pressed" from="ui_upgrade/ui_upgrade_potion" to="." method="_upgrade_potion"]
+[connection signal="pressed" from="button_exit" to="." method="_exit_game"]
+[connection signal="mouse_entered" from="button_world" to="." method="_mouse_hover"]
+[connection signal="mouse_exited" from="button_world" to="." method="_mouse_exit"]
+[connection signal="pressed" from="button_world" to="." method="_go_outside"]

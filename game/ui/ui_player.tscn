@@ -1,0 +1,174 @@
+[gd_scene load_steps=26 format=2]
+
+[ext_resource path="res://images/ui/back.png" type="Texture" id=1]
+[ext_resource path="res://images/spritesheets/knight.png" type="Texture" id=2]
+[ext_resource path="res://ui/ui_hp_bar.tscn" type="PackedScene" id=3]
+[ext_resource path="res://ui/ui_button_guard.tscn" type="PackedScene" id=4]
+[ext_resource path="res://ui/ui_button_potion.tscn" type="PackedScene" id=5]
+
+[sub_resource type="AtlasTexture" id=1]
+atlas = ExtResource( 2 )
+region = Rect2( 0, 0, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=2]
+atlas = ExtResource( 2 )
+region = Rect2( 32, 0, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=3]
+atlas = ExtResource( 2 )
+region = Rect2( 64, 0, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=4]
+atlas = ExtResource( 2 )
+region = Rect2( 96, 0, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=5]
+atlas = ExtResource( 2 )
+region = Rect2( 0, 32, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=6]
+atlas = ExtResource( 2 )
+region = Rect2( 32, 32, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=7]
+atlas = ExtResource( 2 )
+region = Rect2( 64, 32, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=8]
+atlas = ExtResource( 2 )
+region = Rect2( 96, 32, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=9]
+atlas = ExtResource( 2 )
+region = Rect2( 0, 64, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=10]
+atlas = ExtResource( 2 )
+region = Rect2( 32, 64, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=11]
+atlas = ExtResource( 2 )
+region = Rect2( 64, 128, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=12]
+atlas = ExtResource( 2 )
+region = Rect2( 64, 64, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=13]
+atlas = ExtResource( 2 )
+region = Rect2( 96, 64, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=14]
+atlas = ExtResource( 2 )
+region = Rect2( 0, 96, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=15]
+atlas = ExtResource( 2 )
+region = Rect2( 32, 96, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=16]
+atlas = ExtResource( 2 )
+region = Rect2( 64, 96, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=17]
+atlas = ExtResource( 2 )
+region = Rect2( 96, 96, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=18]
+atlas = ExtResource( 2 )
+region = Rect2( 0, 128, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=19]
+atlas = ExtResource( 2 )
+region = Rect2( 32, 128, 32, 32 )
+
+[sub_resource type="SpriteFrames" id=20]
+animations = [ {
+"frames": [ SubResource( 1 ), SubResource( 2 ), SubResource( 3 ), SubResource( 4 ), SubResource( 5 ), SubResource( 6 ), SubResource( 7 ), SubResource( 8 ), SubResource( 9 ), SubResource( 10 ) ],
+"loop": true,
+"name": "idle",
+"speed": 12.0
+}, {
+"frames": [ SubResource( 11 ) ],
+"loop": true,
+"name": "guard",
+"speed": 12.0
+}, {
+"frames": [ SubResource( 12 ), SubResource( 13 ), SubResource( 14 ), SubResource( 15 ), SubResource( 16 ), SubResource( 17 ), SubResource( 18 ), SubResource( 19 ) ],
+"loop": false,
+"name": "attack",
+"speed": 12.0
+} ]
+
+[node name="ui_player" type="TextureRect"]
+anchor_top = 0.758789
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = ExtResource( 1 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": true
+}
+
+[node name="sprite" type="AnimatedSprite" parent="."]
+position = Vector2( 283.649, 142.732 )
+scale = Vector2( 4, 4 )
+frames = SubResource( 20 )
+animation = "idle"
+frame = 3
+playing = true
+
+[node name="bg" type="ColorRect" parent="sprite"]
+show_behind_parent = true
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -16.0
+margin_top = -16.0
+margin_right = -16.0
+margin_bottom = -16.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="btn_attack" type="Button" parent="sprite"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -16.0
+margin_top = -16.0
+margin_right = -16.0
+margin_bottom = -16.0
+flat = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="hp_bar" parent="." instance=ExtResource( 3 )]
+anchor_left = 0.149306
+anchor_top = 0.11336
+anchor_right = 0.84375
+anchor_bottom = 0.269611
+margin_right = -200.0
+margin_bottom = -33.7696
+rect_scale = Vector2( 2, 8 )
+
+[node name="button_guard" parent="." instance=ExtResource( 4 )]
+anchor_left = 0.682935
+anchor_top = 0.327271
+anchor_right = 0.905157
+anchor_bottom = 0.845489
+margin_left = 0.629639
+margin_top = 1.16413
+margin_right = -95.3703
+margin_bottom = -94.8359
+rect_scale = Vector2( 4, 4 )
+
+[node name="button_potion" parent="." instance=ExtResource( 5 )]
+anchor_left = 0.0980973
+anchor_top = 0.315924
+anchor_right = 0.32032
+anchor_bottom = 0.834143
+margin_left = -0.504025
+margin_top = 3.96668
+margin_right = -96.504
+margin_bottom = -92.0333
+rect_scale = Vector2( 4, 4 )

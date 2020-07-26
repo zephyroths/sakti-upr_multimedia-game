@@ -1,0 +1,82 @@
+[gd_scene load_steps=11 format=2]
+
+[ext_resource path="res://scripts/world_map.gd" type="Script" id=1]
+[ext_resource path="res://ui/button_dungeon_fire.tscn" type="PackedScene" id=2]
+[ext_resource path="res://ui/button_dungeon_normal.tscn" type="PackedScene" id=3]
+[ext_resource path="res://ui/button_dungeon_earth.tscn" type="PackedScene" id=4]
+[ext_resource path="res://ui/button_dungeon_wind.tscn" type="PackedScene" id=5]
+[ext_resource path="res://ui/button_town.tscn" type="PackedScene" id=6]
+[ext_resource path="res://ui/button_dungeon_final.tscn" type="PackedScene" id=7]
+[ext_resource path="res://ui/button_dungeon_water.tscn" type="PackedScene" id=8]
+[ext_resource path="res://images/backgrounds/world_map.png" type="Texture" id=9]
+[ext_resource path="res://ui/ui_crista.tscn" type="PackedScene" id=10]
+
+[node name="world_map" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="background" type="TextureRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = ExtResource( 9 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="dungeon_normal" parent="." instance=ExtResource( 3 )]
+position = Vector2( 350.982, 685.327 )
+scale = Vector2( 4, 4 )
+
+[node name="dungeon_fire" parent="." instance=ExtResource( 2 )]
+position = Vector2( 102.255, 421.147 )
+scale = Vector2( 4, 4 )
+
+[node name="dungeon_water" parent="." instance=ExtResource( 8 )]
+position = Vector2( 292.002, 470.548 )
+scale = Vector2( 4, 4 )
+
+[node name="dungeon_earth" parent="." instance=ExtResource( 4 )]
+position = Vector2( 467.451, 367.289 )
+scale = Vector2( 4, 4 )
+
+[node name="dungeon_wind" parent="." instance=ExtResource( 5 )]
+position = Vector2( 225.719, 187.55 )
+scale = Vector2( 4, 4 )
+
+[node name="dungeon_final" parent="." instance=ExtResource( 7 )]
+position = Vector2( 286.271, 79.4252 )
+scale = Vector2( 4, 4 )
+
+[node name="town" parent="." instance=ExtResource( 6 )]
+position = Vector2( 120.583, 811.319 )
+scale = Vector2( 4, 4 )
+
+[node name="crista" parent="." instance=ExtResource( 10 )]
+position = Vector2( 296.796, 957.302 )
+scale = Vector2( 2, 2 )
+[connection signal="pressed" from="dungeon_normal/button" to="." method="move_dungeon_normal"]
+[connection signal="pressed" from="dungeon_fire/button" to="." method="move_dungeon_fire"]
+[connection signal="pressed" from="dungeon_water/button" to="." method="move_dungeon_water"]
+[connection signal="pressed" from="dungeon_earth/button" to="." method="move_dungeon_earth"]
+[connection signal="pressed" from="dungeon_wind/button" to="." method="move_dungeon_wind"]
+[connection signal="pressed" from="dungeon_final/button" to="." method="move_dungeon_final"]
+[connection signal="pressed" from="town/button" to="." method="move_town"]
+
+[editable path="dungeon_normal"]
+
+[editable path="dungeon_fire"]
+
+[editable path="dungeon_water"]
+
+[editable path="dungeon_earth"]
+
+[editable path="dungeon_wind"]
+
+[editable path="dungeon_final"]
+
+[editable path="town"]

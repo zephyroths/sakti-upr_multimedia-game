@@ -1,0 +1,134 @@
+[gd_scene load_steps=15 format=2]
+
+[ext_resource path="res://scripts/main_menu.gd" type="Script" id=2]
+[ext_resource path="res://scripts/save_game.gd" type="Script" id=3]
+[ext_resource path="res://system/save/save_game.tscn" type="PackedScene" id=4]
+[ext_resource path="res://images/title_screen/2.png" type="Texture" id=5]
+[ext_resource path="res://images/title_screen/3.png" type="Texture" id=6]
+[ext_resource path="res://images/title_screen/1.png" type="Texture" id=7]
+[ext_resource path="res://images/title_screen/4.png" type="Texture" id=8]
+[ext_resource path="res://images/light.png" type="Texture" id=9]
+[ext_resource path="res://fonts/Kenney Pixel.ttf" type="DynamicFontData" id=10]
+
+[sub_resource type="AnimatedTexture" id=1]
+frames = 4
+fps = 12.0
+frame_0/texture = ExtResource( 7 )
+frame_1/texture = ExtResource( 5 )
+frame_1/delay_sec = 0.0
+frame_2/texture = ExtResource( 6 )
+frame_2/delay_sec = 0.0
+frame_3/texture = ExtResource( 8 )
+frame_3/delay_sec = 0.0
+
+[sub_resource type="DynamicFont" id=2]
+size = 96
+use_filter = true
+font_data = ExtResource( 10 )
+
+[sub_resource type="DynamicFont" id=3]
+size = 72
+use_filter = true
+font_data = ExtResource( 10 )
+
+[sub_resource type="DynamicFont" id=4]
+size = 48
+font_data = ExtResource( 10 )
+
+[sub_resource type="Animation" id=5]
+resource_name = "main_menu"
+length = 8.0
+loop = true
+step = 1.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("light:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1, 2, 3, 4, 5, 6, 7, 8 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 155.612, 628.727 ), Vector2( 129.907, 638.443 ), Vector2( 128.405, 600.088 ), Vector2( 125.397, 570.758 ), Vector2( 161.659, 559.197 ), Vector2( 164.04, 578.154 ), Vector2( 199.377, 617.182 ), Vector2( 166.816, 613.938 ), Vector2( 155.612, 628.727 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("light:modulate")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 1, 2, 3, 4, 5, 6, 7, 8 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0.411765 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0.411765 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0.411765 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0.411765 ), Color( 1, 1, 1, 1 ) ]
+}
+
+[node name="main_menu" type="Node"]
+script = ExtResource( 2 )
+
+[node name="background" type="TextureRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = SubResource( 1 )
+expand = true
+stretch_mode = 5
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="main_menu_title" type="RichTextLabel" parent="."]
+anchor_top = 0.0498047
+anchor_right = 0.996528
+anchor_bottom = 0.118164
+custom_fonts/normal_font = SubResource( 2 )
+bbcode_enabled = true
+bbcode_text = "[center]PIXEL KNIGHT[/center]"
+text = "PIXEL KNIGHT"
+scroll_active = false
+__meta__ = {
+"_edit_use_anchors_": true
+}
+
+[node name="main_menu_tap" type="RichTextLabel" parent="."]
+anchor_left = 0.00230874
+anchor_top = 0.743321
+anchor_right = 0.995364
+anchor_bottom = 0.795078
+custom_fonts/normal_font = SubResource( 3 )
+bbcode_enabled = true
+bbcode_text = "[center]TAP TO PLAY[/center]"
+text = "TAP TO PLAY"
+scroll_active = false
+__meta__ = {
+"_edit_use_anchors_": true
+}
+
+[node name="main_menu_subtitle" type="RichTextLabel" parent="."]
+anchor_top = 0.116211
+anchor_right = 1.0
+anchor_bottom = 0.154297
+custom_fonts/normal_font = SubResource( 4 )
+bbcode_enabled = true
+bbcode_text = "[center]MADE BY UKM SAKTI UPR[/center]"
+text = "MADE BY UKM SAKTI UPR"
+__meta__ = {
+"_edit_use_anchors_": true
+}
+
+[node name="tween" type="Tween" parent="."]
+repeat = true
+playback/repeat = true
+
+[node name="save_game" parent="." instance=ExtResource( 4 )]
+script = ExtResource( 3 )
+
+[node name="light" type="Sprite" parent="."]
+modulate = Color( 1, 1, 1, 0.859371 )
+position = Vector2( 150.72, 631.423 )
+texture = ExtResource( 9 )
+
+[node name="animation" type="AnimationPlayer" parent="."]
+autoplay = "main_menu"
+anims/main_menu = SubResource( 5 )

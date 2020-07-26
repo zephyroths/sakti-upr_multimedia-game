@@ -1,0 +1,112 @@
+[gd_scene load_steps=16 format=2]
+
+[ext_resource path="res://images/ui/UI.png" type="Texture" id=1]
+[ext_resource path="res://images/ui/ui2.png" type="Texture" id=2]
+[ext_resource path="res://images/ui/ui 22.png" type="Texture" id=3]
+
+
+
+
+[sub_resource type="AtlasTexture" id=1]
+atlas = ExtResource( 1 )
+region = Rect2( 0, 32, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=2]
+atlas = ExtResource( 1 )
+region = Rect2( 32, 32, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=3]
+atlas = ExtResource( 1 )
+region = Rect2( 64, 32, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=4]
+atlas = ExtResource( 1 )
+region = Rect2( 96, 32, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=5]
+atlas = ExtResource( 1 )
+region = Rect2( 0, 64, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=6]
+atlas = ExtResource( 1 )
+region = Rect2( 32, 64, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=7]
+atlas = ExtResource( 1 )
+region = Rect2( 64, 64, 32, 32 )
+
+[sub_resource type="SpriteFrames" id=8]
+animations = [ {
+"frames": [ SubResource( 1 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+}, {
+"frames": [ SubResource( 2 ), SubResource( 3 ), SubResource( 4 ), SubResource( 5 ), SubResource( 6 ), SubResource( 7 ) ],
+"loop": true,
+"name": "play",
+"speed": 5.0
+} ]
+
+[sub_resource type="AtlasTexture" id=9]
+atlas = ExtResource( 3 )
+region = Rect2( 0, 32, 96, 32 )
+
+[sub_resource type="SpriteFrames" id=10]
+animations = [ {
+"frames": [ SubResource( 9 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+} ]
+
+[sub_resource type="AtlasTexture" id=11]
+atlas = ExtResource( 1 )
+region = Rect2( 0, 128, 32, 32 )
+
+[sub_resource type="SpriteFrames" id=12]
+animations = [ {
+"frames": [ SubResource( 11 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+} ]
+
+[node name="ui_upgrade_potion" type="Button"]
+anchor_right = 0.4375
+anchor_bottom = 0.03125
+flat = true
+__meta__ = {
+"_edit_use_anchors_": true
+}
+
+[node name="icon_upgrade" type="AnimatedSprite" parent="."]
+position = Vector2( 15.7248, 15.644 )
+frames = SubResource( 8 )
+
+[node name="button" type="AnimatedSprite" parent="."]
+position = Vector2( 78, 16 )
+frames = SubResource( 10 )
+
+[node name="icon_price" type="AnimatedSprite" parent="."]
+position = Vector2( 141, 16 )
+frames = SubResource( 12 )
+
+[node name="texture_price" type="TextureRect" parent="."]
+anchor_left = 0.619048
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": true
+}
+
+[node name="text_price" type="Label" parent="texture_price"]
+anchor_left = 0.0416667
+anchor_top = 0.125
+anchor_right = 0.958333
+anchor_bottom = 0.875
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+__meta__ = {
+"_edit_use_anchors_": true
+}

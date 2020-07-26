@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://main_menu.tscn" type="PackedScene" id=1]
+
+[node name="game" type="Node"]
+
+[node name="loader" type="Node" parent="."]
+
+[node name="main_menu" parent="loader" instance=ExtResource( 1 )]
